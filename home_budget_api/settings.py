@@ -69,6 +69,8 @@ TEMPLATES = [
     },
 ]
 
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
+
 WSGI_APPLICATION = 'home_budget_api.wsgi.application'
 
 
