@@ -22,14 +22,19 @@ class PayeeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class TransactionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Transaction
-        fields = '__all__'
-
-
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id", 'username', 'date_joined')
+
+
+class TransactionSerializer(serializers.ModelSerializer):
+    main_account = AccountSerializer(many=False)
+    type = serializers.CharField(source='get_type_display')
+    author = UserSerializer(many=False)
+    payee = PayeeSerializer(many=False)
+    category = CategorySerializer(many=False)
+
+    class Meta:
+        model = Transaction
+        fields = '__all__'

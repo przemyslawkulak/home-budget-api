@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'api',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -70,6 +73,10 @@ TEMPLATES = [
 ]
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:4200',
+)
 
 WSGI_APPLICATION = 'home_budget_api.wsgi.application'
 
