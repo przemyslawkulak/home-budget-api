@@ -5,12 +5,16 @@ from api.models import Account, Category, Payee, Transaction
 
 
 class AccountSerializer(serializers.ModelSerializer):
-    description = serializers.CharField(required=False)
+    description = serializers.CharField(required=False, allow_blank=True)
     account_balance = serializers.DecimalField(max_digits=8, decimal_places=2, required=False)
 
     class Meta:
         model = Account
         fields = '__all__'
+        extra_kwargs = {
+            'description': {'required': False},
+            'account_balance': {'required': False},
+        }
 
 
 class CategorySerializer(serializers.ModelSerializer):
