@@ -8,7 +8,7 @@ class Account(models.Model):
     account_balance = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, blank=True)
 
     def __str__(self):
-        return f'Name: {self.name} Balance: {self.account_balance}'
+        return f'Name: {self.name} Balance: {self.account_balance} {self.description}'
 
 
 class Category(models.Model):
